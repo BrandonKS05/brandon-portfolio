@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+type HomeSectionProps = { onGoProjects: () => void };
+type TabButtonProps = { active: boolean; children: React.ReactNode; onClick: () => void };
+type LiftProps = { children: React.ReactNode };
+
+
 // ---------------- Tabs ----------------
 function useTabs(initial = "home") {
   const [tab, setTab] = React.useState(initial);
@@ -68,7 +73,8 @@ export default function Portfolio() {
 }
 
 // ---------------- Sections ----------------
-function HomeSection({ onGoProjects }) {
+function HomeSection({ onGoProjects }: HomeSectionProps) {
+
   return (
     <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
       {/* Identity */}
@@ -174,16 +180,16 @@ function ProjectsSection() {
               <CardTitle className="text-xl text-white">{p.title}</CardTitle>
               <div className="flex flex-wrap gap-2 pt-1">
                 {p.tags.map((t) => (
-                  <Badge key={t} variant="secondary" className="bg-white/10 text-slate-100">
-                    {t}
-                  </Badge>
+                  <Badge key={t} className="bg-white/10 text-slate-100">
+  {t}
+</Badge>
                 ))}
               </div>
             </CardHeader>
             <CardContent>
               <p className="text-slate-200">{p.description}</p>
               <div className="mt-4">
-                <Button asChild variant="secondary" className="bg-white text-black font-semibold hover:bg-slate-200">
+                <Button asChild className="bg-white text-black font-semibold hover:bg-slate-200">
                   <a href={p.href} target="_blank" rel="noreferrer">
                     Visit <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
@@ -198,7 +204,8 @@ function ProjectsSection() {
 }
 
 // ---------------- UI helpers ----------------
-function TabButton({ active, children, onClick }) {
+function TabButton({ active, children, onClick }: TabButtonProps) {
+
   return (
     <button
       onClick={onClick}
@@ -212,7 +219,8 @@ function TabButton({ active, children, onClick }) {
   );
 }
 
-function Lift({ children }) {
+function Lift({ children }: LiftProps) {
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
