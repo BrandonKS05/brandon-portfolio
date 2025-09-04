@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+
 type HomeSectionProps = { onGoProjects: () => void };
 type TabButtonProps = { active: boolean; children: React.ReactNode; onClick: () => void };
 type LiftProps = { children: React.ReactNode };
